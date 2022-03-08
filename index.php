@@ -1,3 +1,9 @@
+<?php
+    if (!empty($_FILES['file'])) {
+        var_dump($_FILES['file']);
+        exit;
+    }
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -16,7 +22,7 @@
     } else {
         if ($_SERVER['PHP_AUTH_USER'] != 'admin' && $_SERVER['PHP_AUTH_PW'] != 'Aa111111') {
 ?>
-            <form action="upload" enctype="multipart/form-data">
+            <form action="" enctype="multipart/form-data">
                 <input type="file" name="file">
                 <input type="submit" value="提交">
             </form>
@@ -30,8 +36,3 @@
 ?>
 </body>
 </html>
-<?php
-    function upload() {
-        var_dump($_FILES['file']);
-    }
-?>
