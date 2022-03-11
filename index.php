@@ -1,6 +1,10 @@
 <?php
     if (!empty($_FILES['file'])) {
-        var_dump($_FILES['file']);
+        $fileName = explode('.', $_FILES['file']['name']);
+        $dirName = 'images/'.substr(time(), -4).'/'.substr(time(), 0, 4).'/';
+        mkdir(__DIR__.'/'.$dirName, 0777, true);
+        copy($_FILES['file']['tmp_name'], __DIR__.'/'.$dirName.'image.'.end($fileName));
+        echo "http://image.abczyx.xyz/".$dirName.'image.'.end($fileName);
         exit;
     }
 ?>
